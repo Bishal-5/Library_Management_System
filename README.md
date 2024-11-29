@@ -15,3 +15,5 @@
 ## Run Server
 - `python manage.py runserver` : Run The DJango Server.
 - `localhost:8000` or `http://127.0.0.1:8000/` : Open this web url on browser.
+## Create SuperUser for Admin Pannel
+- `python manage.py createsuperuser` : Create Superuser.
