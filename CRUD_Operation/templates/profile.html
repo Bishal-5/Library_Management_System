@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #cae3f5;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">PROFILE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-flex" id="navbarNavDropdown">
+          <div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="btn btn-success m-2" href="employee/add">INSERT DATA</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-danger m-2" href="/signout">LOGOUT</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-2 border border-1 border-dark">
+      <div class="row text-center p-1">
+          <div class="col-2 border border-1 border-dark">
+              Employee ID
+          </div>
+          <div class="col-2 border border-1 border-dark">
+              Name
+          </div>
+          <div class="col-2 border border-1 border-dark">
+              Age
+          </div>
+          <div class="col-2 border border-1 border-dark">
+              Job Description
+          </div>
+          <div class="col-2 border border-1 border-dark">
+              Profile
+          </div>
+          <div class="col-2 border border-1 border-dark">
+              Action
+          </div>
+      </div>
+      {% for e in employee %}
+      <div class="row text-center p-1" onclick="employeeUpdate({{ e.eid }})">
+          <div class="col-2 border border-1 border-dark  align-content-center">
+              {{ e.eid }}
+          </div>
+          <div class="col-2 border border-1 border-dark  align-content-center">
+              {{ e.name }}
+          </div>
+          <div class="col-2 border border-1 border-dark  align-content-center">
+              {{ e.age }}
+          </div>
+          <div class="col-2 border border-1 border-dark  align-content-center">
+              {{ e.jobDescription }}
+          </div>
+          <div class="col-2 border border-1 border-dark  align-content-center">
+              <img src="{{ e.profile_photo.url }}" alt="" class="img-fluid w-50">
+          </div>
+          <div class="col-2 border border-1 border-dark align-content-center">
+              <a href="/employee/delete/{{ e.eid }}" class="btn btn-outline-danger">DELETE</a>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function employeeUpdate(id){
+          location.assign("/employee/update/"+id);
+      }
+  </script>
+  </body>
+</html>
