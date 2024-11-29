@@ -1,17 +1,12 @@
 from django.db import models
-
-# Create your models here.
-
-from django.db import models
 import uuid
 
+# Create your models here.
 def image(instance, filename):
     extension = filename.split('.')[-1]  # Get file extension
     unique_filename = f"{uuid.uuid4().hex}.{extension}"
     return f"employee_photos/{unique_filename}"
 
-
-# Create your models here.
 class Employee(models.Model):
     eid=models.AutoField(primary_key=True)
     name=models.CharField(max_length=100)
